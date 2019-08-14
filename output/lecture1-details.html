@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Lecture1 Details</title>
+        <link rel="stylesheet" href="./theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="./">AIML Content </a></h1>
+                <nav><ul>
+                    <li><a href="./category/master.html">Master</a></li>
+                    <li class="active"><a href="./category/moduel-1.html">Moduel 1</a></li>
+                    <li><a href="./category/moduel-2.html">Moduel 2</a></li>
+                    <li><a href="./category/moduel-3.html">Moduel 3</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="./lecture1-details.html" rel="bookmark"
+           title="Permalink to Lecture1 Details">Lecture1 Details</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="./category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->      <h1>Topic Name: Representing Text and Language</h1>
+<h1><li><a href="https://drive.google.com/file/d/1fvQnvDf2hBbgrgUieRytHlAL2getXDtb/view?usp=sharing" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day04?preview=1-Representing_Text_and_Language.pptx" target="_blank">Representing Text and Language</h1>
+<p></a></li> <br></p>
+<h1>Preview Video <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-a0yjEjEBKw"width="640" height="480"></iframe></p>
+<h1>Experiment<br><br></h1>
+<p><strong>BOW_20newsgroup</strong> <br>
+1.  Representation of  text document using Bag of Words<br>
+2.  Understand Bag of Words represented text data with K-nearest neighbours<br></p>
+<p><strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1r_W2Dz442PlDXM-qBpsVoW6SR3KPxDga/view?usp=sharing">BOW_20newsgroup</a></p>
+<p><br><br></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/aiml/AIML_BATCH_HYD_7/Week_1/bag_of_words.mp4"width="640" height="480"></iframe></p>
+<p><br><br></p>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-dPokq_0Irg"width="640" height="480"></iframe></p>
+<style>
+
+html{
+     width : 100%;
+     height: 100%;
+}
+
+body{
+     width : 100%;
+     height: 100%;
+}
+
+.comentBox{
+     padding:1%
+     width : 96%;
+     border: 1px solid #000;
+     background-color: #00FFFF;
+     margin-bottom:10px;
+     text-align : center;
+}
+
+.leftPanelImg{
+     width: 10%;
+     float : left;
+
+}
+.leftPanelImg img{
+     border-radius:20px;
+}
+.Rightpanel{
+     width: 85%;
+     float: left;
+     margin-left:1%;
+
+}
+.clear{
+      clear :both;
+}
+.comentBox h5{
+     text-align : center;
+
+}
+.comentBox input[type ="text"], .comentBox input[type ="date"],.comentBox textarea{
+     border:1px solid #000;
+     padding:2px;
+     width: 300px;
+}
+
+
+
+</style>
+
+<p><body>
+<div class = 'comentBox'>
+    <form id="form">  <br />
+        <h5> Add Comment </h5>
+       Name: <input type = "text" id ="firstname" required><br/><br/>
+       Date: <input type = "date" id ="date" required><br/><br/>
+       Body: <textarea rows ="5" col ="30" id ="body" required></textarea><br/><br/>
+       <input type = "submit" id ="addcoment" value ="Add Comment"/>
+        </form>
+</div></p>
+<div id ='container'></div>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+<script>
+
+    let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+       //localStorage.clear()
+
+    const data = JSON.parse(localStorage.getItem('items')); 
+
+    const render = (data) => {
+      const html = "<div class = 'comentBox'><div class ='leftPanelImg'><img src = '/home/tsuser/Desktop/pelican-1/pelican/aiml_content/content/images/AI-7.jpg'width='200' height= '121'></div> <div class ='Rightpanel'><span>"+data.firstname+"</span><div class = 'date'>"+data.date+"</div><p>"+data.body+"</p></div><div class ='clear'></div></div>";
+     $("#container").append(html);
+    }
+
+    $( "#form" ).submit(function (e) {
+      e.preventDefault();
+
+            const addObj ={
+                    "firstname": $('#firstname').val(),
+                    "date" : $('#date').val(),
+                    "body": $('#body').val(),
+          };
+      itemsArray.push(addObj);
+      localStorage.setItem('items', JSON.stringify(itemsArray));
+
+      $("#firstname, #date, #body").val('');
+
+      render(addObj);
+    });
+
+    data.forEach(item => {
+      render(item);
+    });
+</script>
+
+<p></body></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

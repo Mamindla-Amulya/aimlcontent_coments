@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>AIML Content - Moduel 1</title>
+        <link rel="stylesheet" href="../theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="../">AIML Content </a></h1>
+                <nav><ul>
+                    <li><a href="../category/master.html">Master</a></li>
+                    <li class="active"><a href="../category/moduel-1.html">Moduel 1</a></li>
+                    <li><a href="../category/moduel-2.html">Moduel 2</a></li>
+                    <li><a href="../category/moduel-3.html">Moduel 3</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../lecture1-details.html">Lecture1 Details</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info --><h1>Topic Name: Representing Text and Language</h1>
+<h1><li><a href="https://drive.google.com/file/d/1fvQnvDf2hBbgrgUieRytHlAL2getXDtb/view?usp=sharing" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day04?preview=1-Representing_Text_and_Language.pptx" target="_blank">Representing Text and Language</h1>
+<p></a></li> <br></p>
+<h1>Preview Video <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-a0yjEjEBKw"width="640" height="480"></iframe></p>
+<h1>Experiment<br><br></h1>
+<p><strong>BOW_20newsgroup</strong> <br>
+1.  Representation of  text document using Bag of Words<br>
+2.  Understand Bag of Words represented text data with K-nearest neighbours<br></p>
+<p><strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1r_W2Dz442PlDXM-qBpsVoW6SR3KPxDga/view?usp=sharing">BOW_20newsgroup</a></p>
+<p><br><br></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/aiml/AIML_BATCH_HYD_7/Week_1/bag_of_words.mp4"width="640" height="480"></iframe></p>
+<p><br><br></p>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-dPokq_0Irg"width="640" height="480"></iframe></p>
+<style>
+
+html{
+     width : 100%;
+     height: 100%;
+}
+
+body{
+     width : 100%;
+     height: 100%;
+}
+
+.comentBox{
+     padding:1%
+     width : 96%;
+     border: 1px solid #000;
+     background-color: #00FFFF;
+     margin-bottom:10px;
+     text-align : center;
+}
+
+.leftPanelImg{
+     width: 10%;
+     float : left;
+
+}
+.leftPanelImg img{
+     border-radius:20px;
+}
+.Rightpanel{
+     width: 85%;
+     float: left;
+     margin-left:1%;
+
+}
+.clear{
+      clear :both;
+}
+.comentBox h5{
+     text-align : center;
+
+}
+.comentBox input[type ="text"], .comentBox input[type ="date"],.comentBox textarea{
+     border:1px solid #000;
+     padding:2px;
+     width: 300px;
+}
+
+
+
+</style>
+
+<p><body>
+<div class = 'comentBox'>
+    <form id="form">  <br />
+        <h5> Add Comment </h5>
+       Name: <input type = "text" id ="firstname" required><br/><br/>
+       Date: <input type = "date" id ="date" required><br/><br/>
+       Body: <textarea rows ="5" col ="30" id ="body" required></textarea><br/><br/>
+       <input type = "submit" id ="addcoment" value ="Add Comment"/>
+        </form>
+</div></p>
+<div id ='container'></div>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+<script>
+
+    let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+       //localStorage.clear()
+
+    const data = JSON.parse(localStorage.getItem('items')); 
+
+    const render = (data) => {
+      const html = "<div class = 'comentBox'><div class ='leftPanelImg'><img src = '/home/tsuser/Desktop/pelican-1/pelican/aiml_content/content/images/AI-7.jpg'width='200' height= '121'></div> <div class ='Rightpanel'><span>"+data.firstname+"</span><div class = 'date'>"+data.date+"</div><p>"+data.body+"</p></div><div class ='clear'></div></div>";
+     $("#container").append(html);
+    }
+
+    $( "#form" ).submit(function (e) {
+      e.preventDefault();
+
+            const addObj ={
+                    "firstname": $('#firstname').val(),
+                    "date" : $('#date').val(),
+                    "body": $('#body').val(),
+          };
+      itemsArray.push(addObj);
+      localStorage.setItem('items', JSON.stringify(itemsArray));
+
+      $("#firstname, #date, #body").val('');
+
+      render(addObj);
+    });
+
+    data.forEach(item => {
+      render(item);
+    });
+</script>
+
+<p></body></p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture2-details.html" rel="bookmark"
+                           title="Permalink to Lecture2 Details">Lecture2 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Learning Representations Word2Vec</h1>
+<p><br></p>
+<h1><li><a href="https://drive.google.com/file/d/1HjFaVlYw7OYTXpRjR1Tl20ZLwHhc1RNJ/view?usp=sharing" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides</h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day04?preview=2-Learning_Representations_Word2Vec.pptx" target="_blank">Learning Representations Word2Vec</a></li> <br></h1>
+<p><br></p>
+<h1>Preview Video <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-wFNxD17Mrg"width="640" height="480"></iframe></p>
+<h1>Experiment<br><br></h1>
+<p><strong>Newsgroup: Word2vec</strong> <br>
+1. Apply word2vec to find the Representation of  text document<br>
+2.  Classify the word2vec represented documents using KNN<br>
+<strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1IsClVg_cUR4z_xs0wpfvoR7gRcYBnzde/view?usp=sharing">Newsgroup: Word2vec</a></p>
+<p><br><br></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/aiml/AIML_BATCH_HYD_7/JAN20/word2vec_experiment.mp4"width="640" height="480"></iframe></p>
+<p><br><br></p>
+<p><br></p>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-TYsh1ejDUA"width="640" height="480"></iframe></p>
+                <a class="readmore" href="../lecture2-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture3-details.html" rel="bookmark"
+                           title="Permalink to Lecture3 Details">Lecture3 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Perceptrons, Neural Networks</h1>
+<h1><li><a href="https://drive.google.com/drive/u/0/folders/1omaq4jSC2LozvwbJw96K5voy7-US0qu3" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day04?preview=3-Perceptrons_Neural_Networks_Gradient+Descent+.pptx" target="_blank">Perceptrons, Neural Networks</a></li> <br></h1>
+<h1>Preview Video <br><br></h1>
+<h1><iframe src="https://videoken.com/embed/vkene-Ecg798cEfA"width="640" height="480"></iframe></h1>
+<h1>Experiment<br><br></h1>
+<p><strong>Perceptron_CIFAR10</strong><br>
+1. Understanding CIFAR-10 dataset<br>
+2. Perform Multi-class classification using Linear  Classifier - One vs Rest<br>
+<strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1HTGgqbHxpVKMdgHqXpJo39f0nd2KlKMB/view?usp=sharing">Perceptron_CIFAR10</a></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/talentsprint/archives/sc/aiml/aiml_2018_b7_hyd/experiment_details_backup/experiment_perceptron.mp4"width="640" height="480"></iframe></p>
+<p><br><br></p>
+<h1>Topic Name:  Gradient Descent</h1>
+<h1><li><a href="https://drive.google.com/drive/u/0/folders/1omaq4jSC2LozvwbJw96K5voy7-US0qu3" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slide<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day04?preview=3-Perceptrons_Neural_Networks_Gradient+Descent+.pptx" target="_blank">Gradient Descent</a></li> <br></h1>
+<h1>Preview Video <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-aTeW9B61XA"width="640" height="480"></iframe></p>
+<h1>Experiments ...</h1>
+                <a class="readmore" href="../lecture3-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture4-details.html" rel="bookmark"
+                           title="Permalink to Lecture4 Details">Lecture4 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Dimensionality Reduction<br></h1>
+<h1><li><a href="https://drive.google.com/file/d/1U76jTQvAfe4_21KZOD4MYwnr3KNSsO5E/view?usp=sharing" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides</h1>
+<h1><li><a href="https://drive.google.com/drive/u/0/folders/12rE0aoeZ-jNSvqJmK-0h5gdQ_FF0qoPh" target="_blank">Dimensionality Reduction</a></li> <br></h1>
+<h1>Experiment<br><br></h1>
+<p><strong>PCA_Iris</strong></p>
+<ol>
+<li>Reducing the  dimenssionality of the data using PCA</li>
+</ol>
+<p><strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1VkNsby7vQPjhD3pnhfgkgpaLyVSF_Sy1/view?usp=sharing">PCA_Iris</a></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/aiml/AIML_BATCH_HYD_7/Week_1/pca.mp4"width="640" height="480"></iframe></p>
+<p><br><br></p>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-oDRbG_QrOQ"width="640" height="480"></iframe></p>
+                <a class="readmore" href="../lecture4-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture5-details.html" rel="bookmark"
+                           title="Permalink to Lecture5 Details">Lecture5 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: PCA</h1>
+<h1><li><a href="https://drive.google.com/file/d/1przpVV57IPPVhiqN5w4erDVEU-XTUv0o/view?usp=sharing" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides For PCA and EigenFaces</h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day08?preview=PCA_EigenFaces.pptx" target="_blank">PCA</a></li> <br></h1>
+<h1>Preview Video: PCA part-1 <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-eXZtcafu8g"width="640" height="480"></iframe></p>
+<h1>Preview Video: PCA part-2 <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-IqiVJrb2lQ"width="640" height="480"></iframe></p>
+<h1>Experiment<br><br></h1>
+<p><strong>PCAwithEigenFaces</strong><br>
+1. Understanding how to derive Eigen faces using PCA and using the PCA features for classification purpose<br></p>
+<p><strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1c4ZLV5XT4PMKpFZv4LwvNNqeA-u6q2dJ/view?usp=sharing">PCAwithEigenFaces</a></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/talentsprint/archives/sc/aiml/aiml_2018_b7_hyd/experiment_details_backup/pca_with_eigen_faces.mp4" width="640" height="480"></iframe></p>
+<p><br><br></p>
+<h1>Lecture 2 ...</h1>
+                <a class="readmore" href="../lecture5-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture6-details.html" rel="bookmark"
+                           title="Permalink to Lecture6 Details">Lecture6 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Nmae: Multi-Layer Perceptrons</h1>
+<h1><li><a href="https://drive.google.com/file/d/1Kjk7wyXsU1p_IUbY4WRMK7cH85tcr___/view?usp=sharing" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day08?preview=MLP.pptx" target="_blank">Multi-Layer Perceptrons</a></li> <br></h1>
+<h1>Preview Video <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-a0yjEjEBKw"width="640" height="480"></iframe></p>
+<h1>Experiments<br><br></h1>
+<p><strong>MLP_MNIST</strong><br>
+1. Understanding Multi-Layer Perceptron (MLP)and tuning the hyper-parameters of a MLP classifier<br>
+<strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1wlBHSE5DsBUCCsKPpxSuOqvFBfWcDzk7/view?usp=sharing">MLP_MNIST</a>
+<br></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/talentsprint/archives/sc/aiml/aiml_2018_b7_hyd/experiment_details_backup/mlp_mnist.mp4"width="640" height="480"></iframe></p>
+<p><br></p>
+<p><strong>MLP_CIFAR10</strong><br>
+1. Understanding CIFAR-10 datasetand experiment using MLP algorithm <br></p>
+<p><strong>Note:</strong>Here is the following ...</p>
+                <a class="readmore" href="../lecture6-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture7-details.html" rel="bookmark"
+                           title="Permalink to Lecture7 Details">Lecture7 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Features for Perception-1</h1>
+<h1>Slides<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day08?preview=Features_for_Perception_1.pptx" target="_blank">Features for Perception-1</a></li> <br></h1>
+<h1>Experiment<br><br></h1>
+<p><strong>Yes_No_Classifier_Speech</strong><br>
+1. Obtain the mfcc features from audio samples<br> 
+2. Train the classifier with these mfcc features<br>
+3. classify the audio samples into 'yes' and 'no<br></p>
+<p><strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1ELVEU0G44R0bF9ZUmjRI3EfOqv11wb1a/view?usp=sharing">Yes_No_Classifier_Speech</a></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/talentsprint/archives/sc/aiml/aiml_2018_b7_hyd/experiment_details_backup/yes_no_classifier.mp4"width="640" height="480"></iframe></p>
+<h1>Lecture Video (Batch ...</h1>
+                <a class="readmore" href="../lecture7-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../lecture8-details.html" rel="bookmark"
+                           title="Permalink to Lecture8 Details">Lecture8 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Features for Perception-2</h1>
+<h1>Slides<br></h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day08?preview=Features_for_Perception_2.pptx" target="_blank">Features for Perception-2</a></li> <br></h1>
+<h1>Experiment<br><br></h1>
+<p><strong>MFCC</strong><br>
+1. Extracting and visualizing features for audio samples<br>
+2. Use extracted features to classify them into 30 different classes<br>
+<strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1pZXZWXF-kbCtMqBPGGzJpoqNTvRSENFA/view?usp=sharing">MFCC</a></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/aiml/AIML_BATCH_HYD_7/Feb10/mfcc.mp4"width="640" height="480"></iframe>
+<br><br></p>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-p0IxVdan7w"width="640" height="480"></iframe></p>
+                <a class="readmore" href="../lecture8-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../spl1-details.html" rel="bookmark"
+                           title="Permalink to SPL1 Details">SPL1 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Word2Vec: Mahabharatha</h1>
+<h1>Experiment<br><br></h1>
+<p><strong>Word2vec</strong><br>
+1. Apply word2vec to find the Representation of text document<br>
+2. Classify the word2vec represented documents using KNN<br>
+<strong>Note:</strong>Here is the following Notebook For <a href="https://drive.google.com/file/d/1IsClVg_cUR4z_xs0wpfvoR7gRcYBnzde/view?usp=sharing">Word2vec</a></p>
+<h3>Experiment Explanation Video <br><br></h3>
+<p><iframe src="https://cdn.talentsprint.com/aiml/AIML_BATCH_HYD_7/JAN20/word2vec_experiment.mp4"width="640" height="480"></iframe></p>
+<p><br><br></p>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-Op3iyu0nmQ"width="640" height="480"></iframe></p>
+                <a class="readmore" href="../spl1-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../spl2-details.html" rel="bookmark"
+                           title="Permalink to SPL2 Details">SPL2 Details</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-07-23T23:39:00+05:30">
+                Published: Tue 23 July 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/talentsprint.html">TalentSprint</a>
+        </address>
+<p>In <a href="../category/moduel-1.html">Moduel 1</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Topic Name: Performance Metrics (Accuracy)</h1>
+<h1><li><a href="https://drive.google.com/drive/u/0/folders/1VgmAOPCno1UopRTLkei572Zxc1Cdd_I2" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides</h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day06?preview=Performance_metrics.pptx" target="_blank">Performance Metrics (Accuracy)</a></li> <br></h1>
+<h1>Preview Video <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-wloMZXYK8g"width="640" height="480"></iframe></p>
+<p><br><br><br></p>
+<h1>Topic Name: Performance Metrics (Precision and Recall)</h1>
+<h1><li><a href="https://drive.google.com/drive/u/0/folders/1VgmAOPCno1UopRTLkei572Zxc1Cdd_I2" target="_blank">Pre-Reading</a></li> <br></h1>
+<h1>Slides</h1>
+<h1><li><a href="https://www.dropbox.com/home/Batch7/Slides/Day06?preview=Performance_metrics.pptx" target="_blank">Performance Metrics (Precision and Recall)</a></li> <br></h1>
+<h1>Preview Video <br><br></h1>
+<h1><iframe src="https://videoken.com/embed/vkene-87xtpx7n0g"width="640" height="480"></iframe></h1>
+<h1>Lecture Video (Batch 9) <br><br></h1>
+<p><iframe src="https://videoken.com/embed/vkene-AJWb62_scg"width="640" height="480"></iframe></p>
+                <a class="readmore" href="../spl2-details.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="../category/moduel-12.html">&raquo;</a>
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

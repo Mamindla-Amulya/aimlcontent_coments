@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>AIML Content - Anomaly detection</title>
+        <link rel="stylesheet" href="../theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="../">AIML Content </a></h1>
+                <nav><ul>
+                    <li><a href="../category/content.html">Content</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../AIML_Content.html">Updates: 7th May, 2019</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-05-07T23:39:00+05:30">
+                Published: Tue 07 May 2019
+        </abbr>
+		<br />
+        <abbr class="modified" title="2019-05-07T23:39:00+05:30">
+                Updated: Tue 07 May 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/ts.html">TS</a>
+        </address>
+<p>In <a href="../category/content.html">Content</a>.</p>
+<p>tags: <a href="../tag/7th-may.html">7th May</a> <a href="../tag/anomaly-detection.html">Anomaly detection</a> <a href="../tag/spatio-temporal-auto-encoders.html">Spatio Temporal Auto Encoders</a> <a href="../tag/3d-convolution.html">3D convolution</a> </p>
+</footer><!-- /.post-info --><h1>Quick Updates</h1>
+<ul>
+<li>
+<p>Training a Spatio temporal Autoencoder that used 3D convolutions and Deconvolutions</p>
+</li>
+<li>
+<p>The networks contains 1 encoder  for representation learning and 2 decoder blocks for reconstruction of inputs and predicting the future sequence</p>
+</li>
+<li>
+<p>Training with MSEloss but with a weighted variations for the prediction error</p>
+</li>
+<li>
+<p>Datasets used in the paper are mostly generated from static (non moving camera) in fixed environment</p>
+</li>
+<li>
+<p>When trained on the data collected on the Indian roads, the inputs are very dynamic along the objects in the enviroment the surrounding also change</p>
+</li>
+<li>
+<p>Regularity score plot for test video sequence</p>
+</li>
+</ul>
+<p><img alt="Regularity_scores" height="300" src="../images/Regularity_scores.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="Histogram" height="300" src="../images/Histogram.png" style="&quot;float:center" target="_blank" width="600"></p>
+<blockquote>
+<ul>
+<li>The frames with less regularity score (anomalies) are lesser than the general population</li>
+<li>By chosing the appropriate threshold, we classify the frames accordingly as anomaly or not</li>
+</ul>
+</blockquote>
+<h1>Results</h1>
+<ul>
+<li>Frames with Regularity score ranging from 0.9 to 1 (along with the regularity score around that frame)</li>
+</ul>
+<p><img alt="3524rs" height="300" src="../images/3524_rs.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="3524" height="300" src="../images/3524.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="47662rs" height="300" src="../images/47662rs.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="47662" height="300" src="../images/47662.png" style="&quot;float:center" target="_blank" width="600"></p>
+<ul>
+<li>Frames with Regularity score ranging from 0.8 to 0.9 (along with the regularity score around that frame)</li>
+</ul>
+<p><img alt="57753rs" height="300" src="../images/57753rs.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="57753" height="300" src="../images/57753.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="653rs" height="300" src="../images/653rs.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="653" height="300" src="../images/653.png" style="&quot;float:center" target="_blank" width="600"></p>
+<ul>
+<li>Frames with Regularity score ranging from 0 to 0.1 (along with the regularity score around that frame)</li>
+</ul>
+<p><img alt="9898rs" height="300" src="../images/9898rs.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="9898" height="300" src="../images/9898.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="239rs" height="300" src="../images/239rs.png" style="&quot;float:center" target="_blank" width="600"></p>
+<p><img alt="239" height="300" src="../images/239.png" style="&quot;float:center" target="_blank" width="600"></p>
+<h1>Queries</h1>
+<ul>
+<li>Due to the changing surroundings, the network is learning represent and reconstruct  road (which is more common than others) leading to trivial learning</li>
+<li>Though the vehicles are reconstructed most of the times, but the error is dominated by the surrounding of the road</li>
+<li>More data from the same route might help in better learning</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
