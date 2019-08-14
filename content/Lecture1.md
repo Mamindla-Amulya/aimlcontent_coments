@@ -108,7 +108,7 @@ body{
 	const data = JSON.parse(localStorage.getItem('items')); 
 
 	const render = (data) => {
-	  const html = "<div class = 'comentBox'><div class ='leftPanelImg'><img src = '/home/tsuser/Desktop/pelican-1/pelican/aiml_content/content/images/AI-7.jpg'width='200' height= '121'></div> <div class ='Rightpanel'><span>"+data.firstname+"</span><div class = 'date'>"+data.date+"</div><p>"+data.body+"</p></div><div class ='clear'></div></div>";
+	  const html = "<div class = 'comentBox'><div class ='leftPanelImg'><img src = 'images/AI-7.jpg'width='200' height= '121'></div> <div class ='Rightpanel'><span>"+data.firstname+"</span><div class = 'date'>"+data.date+"</div><p>"+data.body+"</p></div><div class ='clear'></div></div>";
 	 $("#container").append(html);
 	}
 
